@@ -4,7 +4,7 @@
 
 Welcome to **Quantum Equilibrium**, an advanced wireless monitoring system that leverages **radiation differentials and electron resonance behavior** to detect invisible objects, energy disturbances, and signal anomalies in real time. By analyzing the difference between two wire sensors (Wire A and Wire B), this system can reveal hidden fluctuations in electromagnetic fields — opening the door to a new dimension of environmental awareness.
 
----
+
 
 ## 📑 Table of Contents
 
@@ -32,7 +32,7 @@ Welcome to **Quantum Equilibrium**, an advanced wireless monitoring system that 
   - [7. Getting Started](#7-getting-started)
   - [8. License](#8-license)
 
----
+
 
 ## 1. What Is Quantum Equilibrium?
 
@@ -43,7 +43,7 @@ The system is designed for applications in:
 - **Energy anomaly detection** — identifying fluctuations in ambient radiation or energy fields.
 - **Signal jamming detection** — recognizing interference patterns that disrupt normal signal propagation.
 
----
+
 
 ## 2. The Science: Radiation & Electron Resonance
 
@@ -62,12 +62,12 @@ Electrons in conductive materials resonate at specific frequencies when exposed 
 ### 2.3 Practical Applications
 
 | Application | How It Works |
-|---|---|
+|||
 | **Object Detection** | A non-visible object blocks or reflects ambient radiation, causing one wire to read differently than the other. |
 | **Energy Monitoring** | Sudden spikes or drops in the differential indicate power surges, equipment failure, or environmental changes. |
 | **Interference Detection** | Erratic, high-frequency changes in the difference signal suggest signal jamming or electromagnetic interference. |
 
----
+
 
 ## 3. System Architecture
 
@@ -78,7 +78,7 @@ Electrons in conductive materials resonate at specific frequencies when exposed 
 The architecture diagram above illustrates the complete data flow:
 
 | Component | Role |
-|---|---|
+|||
 | **ESP32 Microcontroller** | Reads analog signals from Wire A and Wire B, computes the difference (selisih), and publishes JSON data via MQTT. |
 | **Mosquitto MQTT Broker** | Receives sensor data from ESP32 over TCP (port 1883) and exposes a WebSocket interface (port 9001). |
 | **Nginx Web Server** | Serves the web frontend and proxies WebSocket connections to the MQTT broker at `/mqtt`. |
@@ -103,7 +103,7 @@ The architecture diagram above illustrates the complete data flow:
 4. The Mosquitto broker receives the data and forwards it to all subscribers.
 5. The web dashboard displays the values in real time using circular gauges, a difference progress bar, and a warning lamp that activates when `selisih > threshold`.
 
----
+
 
 ## 4. Illustration: Concept Visualization
 
@@ -116,7 +116,7 @@ This illustration visualizes the core concept of **radiation differential detect
 - When an **invisible object** (shown as a translucent shape) enters the field, it distorts the radiation pattern, causing the two wires to read differently.
 - The **difference (selisih)** value therefore acts as a proxy for detecting the presence, position, or movement of objects and energy sources that cannot be seen with the naked eye.
 
----
+
 
 ## 5. Screenshots & Explanations
 
@@ -131,7 +131,7 @@ This screenshot shows the Docker Compose deployment process. The system runs two
 
 The containers are orchestrated using `docker-compose.yml`, making deployment simple and repeatable across environments.
 
----
+
 
 ### 5.2 ESP32 Module Setup
 
@@ -144,7 +144,7 @@ This screenshot shows the ESP32 microcontroller connected to the development env
 - MQTT client library to publish sensor data to the broker.
 - A configurable threshold value that determines when the alarm status is triggered.
 
----
+
 
 ### 5.3 Arduino Monitor Output
 
@@ -162,7 +162,7 @@ Status: ALARM!
 
 This output confirms that the ESP32 is correctly reading the analog values, computing the difference, and evaluating the threshold condition. The serial output is useful for debugging and calibration.
 
----
+
 
 ### 5.4 MQTT Broker — Publish from ESP32
 
@@ -172,7 +172,7 @@ This screenshot shows the MQTT broker receiving data published by the ESP32. The
 
 This stage validates that the end-to-end data pipeline from sensor to broker is working correctly.
 
----
+
 
 ### 5.5 Mobile Dashboard — Wire Difference Monitoring
 
@@ -189,7 +189,7 @@ These screenshots show the web dashboard displayed on a mobile device. The user 
 
 The dashboard is designed as a **Progressive Web App (PWA)** with a glass-morphism aesthetic, making it suitable for mobile monitoring in the field.
 
----
+
 
 ### 5.6 MQTT WebSocket Subscription
 
@@ -197,7 +197,7 @@ The dashboard is designed as a **Progressive Web App (PWA)** with a glass-morphi
 
 This screenshot shows the MQTT broker handling WebSocket subscriptions from the web frontend. The Nginx server proxies WebSocket connections from the browser to the Mosquitto broker at the `/mqtt` endpoint. The log confirms that the frontend has successfully subscribed to the `monitoring/wire` topic and is receiving real-time updates.
 
----
+
 
 ### 5.7 Hardware Prototype
 
@@ -212,7 +212,7 @@ This photo shows the physical hardware prototype of the Quantum Equilibrium syst
 
 The prototype demonstrates the minimal hardware required to implement the radiation differential detection concept.
 
----
+
 
 ### 5.8 Demo Video
 
@@ -222,12 +222,12 @@ The prototype demonstrates the minimal hardware required to implement the radiat
 
 This short video demonstrates the complete system working in real time — from the ESP32 reading analog values from Wire A and Wire B, publishing the data via MQTT, to the web dashboard displaying the difference (selisih) value with the alarm lamp activating when the threshold is exceeded.
 
----
+
 
 ## 6. Technology Stack
 
 | Layer | Technology |
-|---|---|
+|||
 | **Microcontroller** | ESP32 (Arduino Framework) |
 | **Messaging** | MQTT via Eclipse Mosquitto |
 | **Web Server** | Nginx (reverse proxy + static files) |
@@ -236,7 +236,7 @@ This short video demonstrates the complete system working in real time — from 
 | **Containerization** | Docker & Docker Compose |
 | **Visualization** | SVG gauges, animated progress bars, glass-morphism UI |
 
----
+
 
 ## 7. Getting Started
 
@@ -260,13 +260,13 @@ This short video demonstrates the complete system working in real time — from 
 5. **Monitor:**
    Watch the real-time data flow from the ESP32 sensors to the web dashboard.
 
----
+
 
 ## 8. License
 
 This project is open source and available under the MIT License.
 
----
+
 
 <p align="center">
   Made with ⚡ for the invisible world around us.
