@@ -1,4 +1,4 @@
-# ⚡ Quantum Equilibrium — Wire Difference Monitoring System
+# ⚡ Quantum Equilibrium 
 
 > **Discover the unseen. Measure the imbalance. Detect the invisible.**
 
@@ -8,7 +8,7 @@ Welcome to **Quantum Equilibrium**, an advanced wireless monitoring system that 
 
 ## 📑 Table of Contents
 
-- [⚡ Quantum Equilibrium — Wire Difference Monitoring System](#-quantum-equilibrium--wire-difference-monitoring-system)
+- [⚡ Quantum Equilibrium](#-quantum-equilibrium)
   - [📑 Table of Contents](#-table-of-contents)
   - [1. What Is Quantum Equilibrium?](#1-what-is-quantum-equilibrium)
   - [2. The Science: Radiation \& Electron Resonance](#2-the-science-radiation--electron-resonance)
@@ -27,6 +27,7 @@ Welcome to **Quantum Equilibrium**, an advanced wireless monitoring system that 
     - [5.5 Mobile Dashboard — Wire Difference Monitoring](#55-mobile-dashboard--wire-difference-monitoring)
     - [5.6 MQTT WebSocket Subscription](#56-mqtt-websocket-subscription)
     - [5.7 Hardware Prototype](#57-hardware-prototype)
+    - [5.8 Demo Video](#58-demo-video)
   - [6. Technology Stack](#6-technology-stack)
   - [7. Getting Started](#7-getting-started)
   - [8. License](#8-license)
@@ -210,6 +211,16 @@ This photo shows the physical hardware prototype of the Quantum Equilibrium syst
 - **Power supply** via USB connection to a computer or power bank.
 
 The prototype demonstrates the minimal hardware required to implement the radiation differential detection concept.
+
+---
+
+### 5.8 Demo Video
+
+🎥 **Watch the system in action:** [Quantum Equilibrium — Wire Difference Monitoring Demo](https://www.youtube.com/shorts/lXxBOP9GZvs)
+
+[![Quantum Equilibrium Demo](https://img.youtube.com/vi/lXxBOP9GZvs/0.jpg)](https://www.youtube.com/shorts/lXxBOP9GZvs)
+
+This short video demonstrates the complete system working in real time — from the ESP32 reading analog values from Wire A and Wire B, publishing the data via MQTT, to the web dashboard displaying the difference (selisih) value with the alarm lamp activating when the threshold is exceeded.
 
 ---
 
