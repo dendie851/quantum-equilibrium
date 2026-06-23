@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wire Monitoring System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- MQTT library via CDN -->
+    <script src="https://unpkg.com/mqtt@4.3.7/dist/mqtt.min.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo-area">
+                <span class="pulse-dot"></span>
+                <h1>WIRE MONITOR</h1>
+            </div>
+            <div class="status-badge connected" id="connection-status">
+                Disconnected
+            </div>
+        </header>
+
+        <!-- Main Dashboard -->
+        <main class="main-content">
+            <!-- Indicator Section -->
+            <section class="indicator-section glass-card">
+                <h2>WIRE STATUS</h2>
+                <div class="lamp-container">
+                    <div class="warning-lamp" id="warning-lamp"></div>
+                    <span class="lamp-label" id="lamp-label">SYSTEM NORMAL</span>
+                </div>
+            </section>
+
+            <!-- Cards Container -->
+            <section class="grid-container">
+                <!-- Wire A Card -->
+                <div class="value-card glass-card" id="card-kawat-a">
+                    <div class="card-header">
+                        <h3>WIRE A</h3>
+                        <span class="unit">ADC</span>
+                    </div>
+                    <div class="gauge-container">
+                        <svg class="gauge-ring" viewBox="0 0 120 120">
+                            <circle class="gauge-bg" cx="60" cy="60" r="50"></circle>
+                            <circle class="gauge-fill" id="fill-a" cx="60" cy="60" r="50" stroke-dasharray="314" stroke-dashoffset="314"></circle>
+                        </svg>
+                        <div class="gauge-value" id="val-a">0</div>
+                    </div>
+                </div>
+
+                <!-- Wire B Card -->
+                <div class="value-card glass-card" id="card-kawat-b">
+                    <div class="card-header">
+                        <h3>WIRE B</h3>
+                        <span class="unit">ADC</span>
+                    </div>
+                    <div class="gauge-container">
+                        <svg class="gauge-ring" viewBox="0 0 120 120">
+                            <circle class="gauge-bg" cx="60" cy="60" r="50"></circle>
+                            <circle class="gauge-fill" id="fill-b" cx="60" cy="60" r="50" stroke-dasharray="314" stroke-dashoffset="314"></circle>
+                        </svg>
+                        <div class="gauge-value" id="val-b">0</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Difference Display -->
+            <section class="difference-section glass-card">
+                <div class="difference-header">
+                    <h2>DIFFERENCE</h2>
+                    <span class="difference-unit">(Wire A - Wire B)</span>
+                </div>
+                <div class="difference-value-container">
+                    <span class="difference-value" id="difference-value">0</span>
+                </div>
+                <div class="difference-bar-container">
+                    <div class="difference-bar-bg">
+                        <div class="difference-bar-fill" id="difference-bar-fill" style="width: 0%"></div>
+                    </div>
+                    <span class="difference-bar-label" id="difference-bar-label">0% of threshold</span>
+                </div>
+            </section>
+
+            <!-- Controls Section (Static Threshold Display) -->
+            <section class="control-section glass-card">
+                <div class="control-header">
+                    <h2>STATIC THRESHOLD</h2>
+                    <span class="threshold-display" id="threshold-display">200</span>
+                </div>
+                <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: -0.5rem;">
+                    Safety limit for wire difference monitoring.
+                </div>
+            </section>
+
+            <!-- MQTT Configurations & Debug Log (Collapsible) -->
+            <section class="debug-section glass-card">
+                <div class="debug-header" onclick="toggleDebug()">
+                    <h3>MQTT Connection Info</h3>
+                    <span class="chevron" id="debug-chevron">▼</span>
+                </div>
+                <div class="debug-content" id="debug-content">
+                    <div class="form-group">
+                        <label for="mqtt-host">Host WebSocket URL:</label>
+                        <input type="text" id="mqtt-host" placeholder="ws://localhost:9001 or ws://localhost/mqtt">
+                        <button class="btn" onclick="reconnectMQTT()">Connect</button>
+                    </div>
+                    <div class="topics-info">
+                        <p><strong>Subscribed Topic:</strong></p>
+                        <ul>
+                            <li><code>monitoring/wire</code></li>
+                        </ul>
+                        <p style="margin-top: 0.5rem;"><strong>JSON Payload Format:</strong></p>
+                        <pre style="background: rgba(0,0,0,0.3); padding: 0.5rem; border-radius: 6px; font-family: monospace; font-size: 0.7rem; color: #a5b4fc;">
+{
+  "wire_a": 2500,
+  "wire_b": 2300,
+  "selisih": 200,
+  "threshold": 200,
+  "status": false
+}</pre>
+                    </div>
+                    <div class="log-container">
+                        <div class="log-header">Logs:</div>
+                        <pre id="log-box">System initialized. Waiting for connection...</pre>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
